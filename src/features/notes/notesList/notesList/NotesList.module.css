@@ -1,0 +1,17 @@
+.notesListContainer {
+    background-color: #1E2323;
+    width: 25%;
+    padding: 8px;
+}
+
+p {
+    font-weight: 700;
+    color: #8A8A8B;
+    border-bottom: 1px solid #35363A;
+    padding-bottom: 10px;
+}
+
+.notesList {
+    width: 100%;
+    padding: 0;
+}

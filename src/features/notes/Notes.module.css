@@ -1,0 +1,6 @@
+.NotesContainer{
+    height: calc(100vh - 50px);
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}

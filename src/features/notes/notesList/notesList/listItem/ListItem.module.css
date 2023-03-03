@@ -1,0 +1,23 @@
+.ListItemContainer{
+    padding: 0 !important;
+}
+
+.primaryText {
+    display: inline;
+    color: #DADADA;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+}
+
+.secondaryText {
+    color: #DADADA;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.itemText {
+    color: #7B7C80;
+}

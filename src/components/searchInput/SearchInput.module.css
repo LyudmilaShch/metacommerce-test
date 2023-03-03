@@ -1,0 +1,12 @@
+input{
+    color: #828287 !important;
+    padding: 5px 5px !important;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    cursor: pointer;
+    color: #828287;
+}

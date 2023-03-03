@@ -1,0 +1,31 @@
+.headerForEditNoteContainer {
+    width: 75%;
+    background-color: #1E1E23;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.iconsContainer{
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon{
+    height: 20px;
+    width: 20px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.icon:hover{
+    border-radius: 10%;
+    background-color: #2F2F34;
+}
+
+.searchInputContainer{
+    width: 300px;
+}
