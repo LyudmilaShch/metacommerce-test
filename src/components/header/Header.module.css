@@ -1,0 +1,31 @@
+.headerContainer {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerForDisplayContainer {
+    width: 25%;
+    background-color: #1E2323;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.line {
+    margin: auto 0;
+    height: 70%;
+    width: 1px;
+    content: ' ';
+    border-right: 1px solid #37393C;
+}
+
+.topBarContainer {
+    width: 75%;
+    background-color: #1E1E23;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}

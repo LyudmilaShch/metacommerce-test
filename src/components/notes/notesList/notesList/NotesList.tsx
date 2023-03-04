@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 
 import { notesDataType } from '../../Notes';
@@ -10,20 +9,21 @@ import s from './NotesList.module.css';
 
 type NotesListType = {
   notesData: notesDataType;
+  selected: number;
+  changeSelectedItem: (newSelected: number) => void;
 };
 
-export function NotesList({ notesData }: NotesListType) {
+export function NotesList({ notesData, selected, changeSelectedItem }: NotesListType) {
   return (
     <div className={s.notesListContainer}>
-      <p>Сегодня</p>
+      <p className={s.dateWithLine}>Сегодня</p>
       <List className={s.notesList}>
         {notesData.map(el => (
           <ListItemComponent
-            name={el.name}
-            date={el.date}
-            text={el.text}
             key={el.id}
-            id={el.id}
+            item={el}
+            selected={selected}
+            changeSelectedItem={changeSelectedItem}
           />
         ))}
       </List>

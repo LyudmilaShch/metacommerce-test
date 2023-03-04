@@ -1,12 +1,3 @@
-.headerForEditNoteContainer {
-    width: 75%;
-    background-color: #1E1E23;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-}
-
 .iconsContainer{
     width: 25%;
     display: flex;

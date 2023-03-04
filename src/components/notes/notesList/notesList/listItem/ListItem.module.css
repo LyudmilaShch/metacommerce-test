@@ -1,5 +1,10 @@
 .ListItemContainer{
     padding: 0 !important;
+    border-radius: 10px !important;
+}
+
+.selectedItem {
+    background-color: #464646 !important;
 }
 
 .primaryText {
@@ -15,7 +20,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    border-bottom: 1px solid #35363A;
+    line-height: 0 !important;
 }
 
 .itemText {

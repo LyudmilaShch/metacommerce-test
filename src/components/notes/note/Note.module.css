@@ -1,0 +1,16 @@
+.noteContainer {
+    background-color: #1E1E1E;
+    width: 75%;
+    padding: 15px;
+}
+
+.noteDate{
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    color: #8A8A8B;
+}
+
+p{
+    border: none;
+}

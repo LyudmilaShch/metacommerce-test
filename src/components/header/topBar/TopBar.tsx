@@ -1,12 +1,12 @@
-import s from './HeaderForEditNote.module.css';
+import s from './TopBar.module.css';
 
 import editIcon from 'assets/editing.png';
-import SearchInput from 'components/searchInput/SearchInput';
 import upperCaseIcon from 'assets/upperCase.png';
+import SearchInput from 'components/common/searchInput/SearchInput';
 
-export function HeaderForEditNote() {
+export function TopBar() {
   return (
-    <div className={s.headerForEditNoteContainer}>
+    <>
       <div className={s.iconsContainer}>
         <img src={editIcon} alt="editIcon" className={s.icon} />
         <img src={upperCaseIcon} alt="upperCaseIcon" className={s.icon} />
@@ -14,6 +14,6 @@ export function HeaderForEditNote() {
       <div className={s.searchInputContainer}>
         <SearchInput />
       </div>
-    </div>
+    </>
   );
 }
