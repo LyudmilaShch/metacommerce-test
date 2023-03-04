@@ -6,27 +6,25 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import ReactMarkdown from 'react-markdown';
 
-import { noteType } from '../../../Notes';
+import { useNotes } from '../../../../../store/NoteContext';
+import { NoteType } from '../../../Notes';
 
 import s from './ListItem.module.css';
 
 type ListItemComponentType = {
-  item: noteType;
-  selected: number;
-  changeSelectedItem: (newSelected: number) => void;
+  item: NoteType;
+  setEditMode: (value: boolean) => void;
 };
 
-export default function ListItemComponent({
-  item,
-  selected,
-  changeSelectedItem,
-}: ListItemComponentType) {
+export default function ListItemComponent({ item, setEditMode }: ListItemComponentType) {
+  const { selectedNote, onSetSelectedNote } = useNotes();
   const onClickHandler = () => {
-    changeSelectedItem(item.id);
+    onSetSelectedNote(item.id);
+    setEditMode(false);
   };
 
   const ListItemContainerClassName =
-    s.ListItemContainer + (selected === item.id ? ` ${s.selectedItem}` : ' ');
+    s.ListItemContainer + (selectedNote === item.id ? ` ${s.selectedItem}` : ' ');
 
   const stringTime = Intl.DateTimeFormat('ru', {
     hour: 'numeric',
@@ -37,9 +35,9 @@ export default function ListItemComponent({
     <ListItemButton
       className={ListItemContainerClassName}
       onClick={onClickHandler}
-      selected={selected === item.id}
+      selected={selectedNote === item.id}
     >
-      <ListItem alignItems="flex-start">
+      <ListItem alignItems="flex-start" className={s.listItem}>
         <ListItemText
           primary={
             <Typography component="span" variant="body2" className={s.primaryText}>
@@ -47,7 +45,7 @@ export default function ListItemComponent({
             </Typography>
           }
           secondary={
-            <Typography className={s.secondaryText}>
+            <Typography className={s.secondaryText} component="span">
               {stringTime}
               <div className={s.itemText}>
                 <ReactMarkdown>{item.text}</ReactMarkdown>

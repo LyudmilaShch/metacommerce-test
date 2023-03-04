@@ -7,25 +7,14 @@ import s from './TiledNodesList.module.css';
 
 type TiledNotesListType = {
   notesData: notesDataType;
-  selected: number;
-  changeSelectedItem: (newSelected: number) => void;
 };
-export function TiledNotesList({
-  notesData,
-  selected,
-  changeSelectedItem,
-}: TiledNotesListType) {
+export function TiledNotesList({ notesData }: TiledNotesListType) {
   return (
     <div className={s.TiledNotesListContainer}>
       <h3>Сегодня</h3>
       <div className={s.notesCards}>
         {notesData.map(el => (
-          <CardItem
-            key={el.id}
-            item={el}
-            selected={selected}
-            changeSelectedItem={changeSelectedItem}
-          />
+          <CardItem key={el.id} item={el} />
         ))}
       </div>
     </div>

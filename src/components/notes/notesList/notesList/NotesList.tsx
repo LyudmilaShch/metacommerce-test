@@ -9,22 +9,16 @@ import s from './NotesList.module.css';
 
 type NotesListType = {
   notesData: notesDataType;
-  selected: number;
-  changeSelectedItem: (newSelected: number) => void;
+  setEditMode: (value: boolean) => void;
 };
 
-export function NotesList({ notesData, selected, changeSelectedItem }: NotesListType) {
+export function NotesList({ notesData, setEditMode }: NotesListType) {
   return (
     <div className={s.notesListContainer}>
       <p className={s.dateWithLine}>Сегодня</p>
       <List className={s.notesList}>
         {notesData.map(el => (
-          <ListItemComponent
-            key={el.id}
-            item={el}
-            selected={selected}
-            changeSelectedItem={changeSelectedItem}
-          />
+          <ListItemComponent key={el.id} item={el} setEditMode={setEditMode} />
         ))}
       </List>
     </div>

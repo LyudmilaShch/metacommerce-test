@@ -14,9 +14,11 @@
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.11",
+    "@types/uuid": "^9.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.5",
+    "uuid": "^9.0.0",
     "vite-tsconfig-paths": "^4.0.5"
   },
   "devDependencies": {

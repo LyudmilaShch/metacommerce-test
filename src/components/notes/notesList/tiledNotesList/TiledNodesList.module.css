@@ -1,13 +1,15 @@
 .TiledNotesListContainer {
     background-color: #212326;
-    width: 100%;
+    width: 100vw;
     padding: 20px;
 }
 
 
 
 .notesCards {
+    width: calc(100% - 40px);
     padding: 20px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }

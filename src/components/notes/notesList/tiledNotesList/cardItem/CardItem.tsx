@@ -3,21 +3,22 @@ import * as React from 'react';
 import Card from '@mui/material/Card/Card';
 import ReactMarkdown from 'react-markdown';
 
-import { noteType } from '../../../Notes';
+import { NoteType } from '../../../Notes';
 
 import s from './CardItem.module.css';
 
+import { useNotes } from 'store/NoteContext';
+
 type CardItemType = {
-  item: noteType;
-  selected: number;
-  changeSelectedItem: (newSelected: number) => void;
+  item: NoteType;
 };
 
-export function CardItem({ item, selected, changeSelectedItem }: CardItemType) {
-  const cardClassName = s.card + (selected === item.id ? ` ${s.selectedCard}` : ' ');
+export function CardItem({ item }: CardItemType) {
+  const { selectedNote, onSetSelectedNote } = useNotes();
+  const cardClassName = s.card + (selectedNote === item.id ? ` ${s.selectedCard}` : ' ');
 
   const onClickHandler = () => {
-    changeSelectedItem(item.id);
+    onSetSelectedNote(item.id);
   };
 
   const stringTime = Intl.DateTimeFormat('ru', {

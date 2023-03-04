@@ -1,8 +1,9 @@
 import React from 'react';
 
+import { RemoveNoteModal } from '../../modals/RemoveNoteModal';
+
 import s from './HeaderForDisplay.module.css';
 
-import binIcon from 'assets/bin.png';
 import gridIcon from 'assets/grid.png';
 import listIcon from 'assets/list.png';
 import { StyledButtonIcon } from 'components/common/styledButtonIcon/StyledButtonIcon';
@@ -21,7 +22,7 @@ export function HeaderForDisplay({ changeListDisplay }: HeaderForDisplayType) {
         />
       </div>
       <div className={s.deleteIcon}>
-        <StyledButtonIcon src={binIcon} onClickHandler={() => {}} />
+        <RemoveNoteModal />
       </div>
     </>
   );

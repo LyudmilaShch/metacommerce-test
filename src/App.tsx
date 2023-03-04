@@ -1,6 +1,9 @@
 import './App.css';
 import { useState } from 'react';
 
+import { EditModeProvider } from './store/EditModeContext';
+import { NoteProvider } from './store/NoteContext';
+
 import { Header } from 'components/header/Header';
 import { Notes } from 'components/notes/Notes';
 
@@ -12,12 +15,16 @@ function App() {
 
   return (
     <div className="App">
-      <div className="headerBlock">
-        <Header changeListDisplay={changeListDisplay} isListDisplay={isListDisplay} />
-      </div>
-      <div className="notesBlock">
-        <Notes isListDisplay={isListDisplay} />
-      </div>
+      <EditModeProvider>
+        <NoteProvider>
+          <div className="headerBlock">
+            <Header changeListDisplay={changeListDisplay} isListDisplay={isListDisplay} />
+          </div>
+          <div className="notesBlock">
+            <Notes isListDisplay={isListDisplay} />
+          </div>
+        </NoteProvider>
+      </EditModeProvider>
     </div>
   );
 }
