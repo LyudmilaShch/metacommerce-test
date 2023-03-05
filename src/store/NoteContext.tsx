@@ -13,16 +13,16 @@ export function useNotes() {
 
 export function NoteProvider({ children }: any) {
   const [notes, setNotes] = useLocalStorage<any>('notes', []);
-  const [selectedNote, setSelectedNote] = useState('');
+  const [selectedNote, setSelectedNote] = useState({});
 
   useEffect(() => {
     if (notes.length) {
-      setSelectedNote(notes[0].id);
+      setSelectedNote(notes[0]);
     }
   }, []);
 
   const onSetSelectedNote = (id: string) => {
-    setSelectedNote(id);
+    setSelectedNote(notes.find((n: { id: string }) => n.id === id));
   };
   const onCreateNote = () => {
     setNotes((prevNotes: NoteType[]) => [
@@ -30,10 +30,9 @@ export function NoteProvider({ children }: any) {
       ...prevNotes,
     ]);
   };
-
   const onRemoveNote = (id: string) => {
     setNotes(notes.filter((n: NoteType) => n.id !== id));
-    setSelectedNote(notes[0].id);
+    setSelectedNote(notes[0]);
   };
 
   const onUpdateNote = (updatedNote: NoteType) => {
@@ -48,9 +47,9 @@ export function NoteProvider({ children }: any) {
       notes,
       onCreateNote,
       onRemoveNote,
-      selectedNote,
       onSetSelectedNote,
       onUpdateNote,
+      selectedNote,
     }),
     [notes, selectedNote],
   );

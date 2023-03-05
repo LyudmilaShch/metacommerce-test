@@ -2,28 +2,25 @@ import { ChangeEvent, useEffect, useState } from 'react';
 
 import TextField from '@mui/material/TextField/TextField';
 
-import { useNotes } from '../../../../store/NoteContext';
-import { NoteType } from '../../Notes';
-
 import s from './EditNote.module.css';
 
-type NodePropsType = {
-  note: NoteType;
-};
+import { useNotes } from 'store/NoteContext';
 
-export function EditNote({ note }: NodePropsType) {
-  const { onUpdateNote } = useNotes();
-  const [name, setName] = useState(note.name);
-  const [text, setText] = useState(note.text);
+export function EditNote() {
+  const { onUpdateNote, notes, selectedNote } = useNotes();
+  const [name, setName] = useState('');
+  const [text, setText] = useState('');
+
+  const selectedItem = notes.find((n: { id: string }) => n.id === selectedNote.id);
 
   useEffect(() => {
-    setName(note.name);
-    setText(note.text);
-  }, [note.name, note.text]);
+    setName(selectedItem.name);
+    setText(selectedItem.text);
+  }, [selectedItem.name, selectedItem.text]);
 
   const onUpdateField = (newName: string, newText: string) => {
     onUpdateNote({
-      ...note,
+      ...selectedItem,
       name: newName.length > 0 ? newName : 'Название',
       text: newText,
       date: Date.now(),
@@ -42,7 +39,7 @@ export function EditNote({ note }: NodePropsType) {
   const stringDate = Intl.DateTimeFormat('ru', {
     dateStyle: 'long',
     timeStyle: 'short',
-  }).format(note?.date) || <br />;
+  }).format(selectedItem?.date) || <br />;
 
   return (
     <div className={s.editNoteContainer}>

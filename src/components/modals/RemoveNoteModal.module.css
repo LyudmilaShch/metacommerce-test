@@ -6,4 +6,26 @@
   background-color: #1E2323;
   width: 400px;
   height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.closeIcon{
+  position: absolute;
+  top:  5%;
+  left: 90%;
+}
+
+.modalText{
+  padding-top: 20px;
+ font-size: 30px !important;
+  text-align: center;
+}
+.buttonsContainer{
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
 }

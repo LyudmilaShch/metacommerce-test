@@ -1,22 +1,23 @@
 import * as React from 'react';
 
-import { notesDataType } from '../../Notes';
+import Grid from '@mui/material/Grid/Grid';
+
+import { useNotes } from '../../../../store/NoteContext';
+import { NoteType } from '../../Notes';
 
 import { CardItem } from './cardItem/CardItem';
 import s from './TiledNodesList.module.css';
 
-type TiledNotesListType = {
-  notesData: notesDataType;
-};
-export function TiledNotesList({ notesData }: TiledNotesListType) {
+export function TiledNotesList() {
+  const { notes } = useNotes();
   return (
     <div className={s.TiledNotesListContainer}>
       <h3>Сегодня</h3>
-      <div className={s.notesCards}>
-        {notesData.map(el => (
+      <Grid container className={s.notesCards}>
+        {notes.map((el: NoteType) => (
           <CardItem key={el.id} item={el} />
         ))}
-      </div>
+      </Grid>
     </div>
   );
 }

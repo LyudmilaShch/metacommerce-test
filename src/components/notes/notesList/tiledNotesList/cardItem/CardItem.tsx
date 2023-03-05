@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Card from '@mui/material/Card/Card';
 import ReactMarkdown from 'react-markdown';
+import { useNavigate } from 'react-router-dom';
 
 import { NoteType } from '../../../Notes';
 
@@ -14,11 +15,12 @@ type CardItemType = {
 };
 
 export function CardItem({ item }: CardItemType) {
-  const { selectedNote, onSetSelectedNote } = useNotes();
-  const cardClassName = s.card + (selectedNote === item.id ? ` ${s.selectedCard}` : ' ');
+  const { onSetSelectedNote } = useNotes();
+  const navigate = useNavigate();
 
   const onClickHandler = () => {
     onSetSelectedNote(item.id);
+    navigate(`/:${item.id}`);
   };
 
   const stringTime = Intl.DateTimeFormat('ru', {
@@ -28,7 +30,7 @@ export function CardItem({ item }: CardItemType) {
 
   return (
     <div className={s.notesListContainer}>
-      <Card className={cardClassName} onClick={onClickHandler}>
+      <Card className={s.card} onClick={onClickHandler}>
         <h3>{item.name}</h3>
         <ReactMarkdown>{item.text}</ReactMarkdown>
       </Card>

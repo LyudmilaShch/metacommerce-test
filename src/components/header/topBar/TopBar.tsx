@@ -1,12 +1,12 @@
 import React from 'react';
 
+import editIcon from '../../../assets/images/editing.png';
+import upperCaseIcon from '../../../assets/images/upperCase.png';
 import { useNotes } from '../../../store/NoteContext';
 import { StyledButtonIcon } from '../../common/styledButtonIcon/StyledButtonIcon';
 
 import s from './TopBar.module.css';
 
-import editIcon from 'assets/editing.png';
-import upperCaseIcon from 'assets/upperCase.png';
 import SearchInput from 'components/common/searchInput/SearchInput';
 
 export function TopBar() {

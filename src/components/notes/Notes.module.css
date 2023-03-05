@@ -4,3 +4,8 @@
     display: flex;
     justify-content: space-between;
 }
+.noteList{
+    background-color: #1E1E1E;
+    width: 75%;
+    padding: 15px;
+}

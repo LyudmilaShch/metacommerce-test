@@ -8,8 +8,8 @@
 
 .notesCards {
     width: calc(100% - 40px);
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    padding: 30px;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    /*flex-wrap: wrap;*/
 }

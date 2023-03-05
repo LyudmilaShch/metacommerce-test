@@ -19,7 +19,7 @@ h3 {
     cursor: pointer;
 }
 
-.selectedCard{
+.card:hover{
     border: 2px solid  #FAB828;
 }
 
