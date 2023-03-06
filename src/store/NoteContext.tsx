@@ -19,8 +19,11 @@ export function useNotes() {
 }
 
 export function NoteProvider({ children }: { children: React.ReactNode }) {
+  // notes list data state
   const [notes, setNotes] = useLocalStorage<any>('notes', []);
+  // selected note state
   const [selectedNote, setSelectedNote] = useState<NoteType>(notes[0]);
+  // state for search params
   const [searchParams, setSearchParams] = useState('');
   const [displayType, setDisplayType] = useState<'list' | 'tiledList'>('list');
   const [selectedText, setSelectedText] = useState<null | SyntheticEvent<
@@ -73,13 +76,16 @@ export function NoteProvider({ children }: { children: React.ReactNode }) {
   const onSetSelectedText = (e: null | SyntheticEvent<HTMLDivElement, Event>) => {
     setSelectedText(e);
   };
+
+  //  replace the note with the edited note
   const onEditNote = (editedNote: any) => {
-    const editedNotes = notes.map((note: NoteType) => {
-      if (note.id === editedNote.id) return editedNote;
-      return note;
-    });
+    const editedNotes = notes.map((note: NoteType) =>
+      note.id === editedNote.id ? editedNote : note,
+    );
     setNotes(editedNotes);
   };
+
+  // change text and date of the edited note
   const onEditField = (value: string) => {
     onEditNote({
       ...selectedNote,
