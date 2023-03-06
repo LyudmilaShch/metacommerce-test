@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import SearchIcon from '@mui/icons-material/Search';
@@ -7,6 +7,8 @@ import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField/TextField';
 
 import s from './SearchInput.module.css';
+
+import { useNotes } from 'store';
 
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -28,25 +30,26 @@ const CssTextField = styled(TextField)({
   },
 });
 
-export default function SearchInput() {
-  const [value, setValue] = useState('');
+export function SearchInput() {
+  const { searchParams, setSearchParams } = useNotes();
 
   return (
     <CssTextField
       placeholder="Поиск"
       type="text"
       size="small"
-      fullWidth
-      onChange={e => setValue(e.target.value)}
-      value={value}
+      value={searchParams}
+      onChange={e => {
+        setSearchParams(e.target.value);
+      }}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
             <SearchIcon className={s.icon} />
           </InputAdornment>
         ),
-        endAdornment: value && (
-          <HighlightOffIcon className={s.icon} onClick={() => setValue('')} />
+        endAdornment: searchParams && (
+          <HighlightOffIcon className={s.icon} onClick={() => setSearchParams('')} />
         ),
       }}
     />

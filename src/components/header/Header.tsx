@@ -1,25 +1,25 @@
-import { useEditMode } from '../../store/EditModeContext';
-
 import s from './Header.module.css';
-import { HeaderForDisplay } from './headerForDisplayNotes/HeaderForDisplay';
-import { TopBar } from './topBar/TopBar';
+import { HeaderForDisplay } from './headerForDisplayNotes';
+import { TopBar } from './topBar';
 
-type HeaderType = {
-  isListDisplay: boolean;
-};
-export function Header({ isListDisplay }: HeaderType) {
+import { useEditMode, useNotes } from 'store';
+
+export function Header() {
   const { onSetEditMode } = useEditMode();
+  const { displayType } = useNotes();
+
   const HeaderForDisplayStyle = {
-    backgroundColor: isListDisplay ? `#1E2323` : `#212326`,
-    borderRight: isListDisplay ? `2px solid black` : ' ',
+    backgroundColor: displayType === 'list' ? `#1E2323` : `#212326`,
+    borderRight: displayType === 'list' ? `2px solid black` : ' ',
   };
 
   const topBarStyle = {
-    backgroundColor: isListDisplay ? `#1E1E23` : `#212326`,
+    backgroundColor: displayType === 'list' ? `#1E1E23` : `#212326`,
   };
 
   return (
     <div className={s.headerContainer}>
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
       <div
         className={s.headerForDisplayContainer}
         style={HeaderForDisplayStyle}
@@ -27,7 +27,7 @@ export function Header({ isListDisplay }: HeaderType) {
       >
         <HeaderForDisplay />
       </div>
-      {!isListDisplay && <div className={s.line} />}
+      {displayType === 'tiledList' && <div className={s.line} />}
       <div className={s.topBarContainer} style={topBarStyle}>
         <TopBar />
       </div>

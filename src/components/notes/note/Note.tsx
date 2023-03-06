@@ -1,10 +1,9 @@
 import ReactMarkdown from 'react-markdown';
 
-import { useEditMode } from '../../../store/EditModeContext';
-import { useNotes } from '../../../store/NoteContext';
-
-import { EditNote } from './editNote/EditNote';
+import { EditNote } from './editNote';
 import s from './Note.module.css';
+
+import { useEditMode, useNotes } from 'store';
 
 export function Note() {
   const { editMode, onSetEditMode } = useEditMode();

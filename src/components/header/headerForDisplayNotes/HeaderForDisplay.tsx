@@ -2,32 +2,32 @@ import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import backIcon from '../../../assets/images/back.png';
-import gridIcon from '../../../assets/images/grid.png';
-import listIcon from '../../../assets/images/list.png';
-import { RemoveNoteModal } from '../../modals/RemoveNoteModal';
-
 import s from './HeaderForDisplay.module.css';
 
+import gridIcon from 'assets/images/grid.png';
+import listIcon from 'assets/images/list.png';
 import { PATH } from 'assets/routes/path';
-import { StyledButtonIcon } from 'components/common/styledButtonIcon/StyledButtonIcon';
+import { RemoveNoteModal, StyledButtonIcon } from 'components';
+import { useNotes } from 'store';
 
 export function HeaderForDisplay() {
   const navigate = useNavigate();
+  const { setDisplayType } = useNotes();
+
+  const listIconHandler = () => {
+    navigate(PATH.LIST);
+    setDisplayType('list');
+  };
+  const gridIconHandler = () => {
+    navigate(PATH.TILED_LIST);
+    setDisplayType('tiledList');
+  };
+
   return (
     <>
       <div className={s.iconsContainer}>
-        <StyledButtonIcon src={listIcon} onClickHandler={() => navigate(PATH.LIST)} />
-        <StyledButtonIcon
-          src={gridIcon}
-          onClickHandler={() => navigate(PATH.TILED_LIST)}
-        />
-        <StyledButtonIcon
-          src={backIcon}
-          onClickHandler={() => {
-            navigate(-1);
-          }}
-        />
+        <StyledButtonIcon src={listIcon} onClickHandler={listIconHandler} />
+        <StyledButtonIcon src={gridIcon} onClickHandler={gridIconHandler} />
       </div>
       <div className={s.deleteIcon}>
         <RemoveNoteModal />

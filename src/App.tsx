@@ -1,26 +1,19 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Note } from './components/notes/note/Note';
-import { EditModeProvider } from './store/EditModeContext';
-import { NoteProvider } from './store/NoteContext';
-
 import { PATH } from 'assets/routes/path';
-import { Header } from 'components/header/Header';
-import { Notes } from 'components/notes/Notes';
-import { TiledNotesList } from 'components/notes/notesList/tiledNotesList/TiledNotesList';
+import { TiledNotesList, Note, Notes, Header } from 'components';
+import { EditModeProvider, NoteProvider } from 'store';
 
 function App() {
-  const [isListDisplay, setIsListDisplay] = useState(true);
-
   return (
     <div className="App">
       <EditModeProvider>
         <NoteProvider>
           <div className="headerBlock">
-            <Header isListDisplay={isListDisplay} />
+            <Header />
           </div>
           <div className="notesBlock">
             <Routes>

@@ -1,13 +1,13 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react';
 
 import TextField from '@mui/material/TextField/TextField';
 
 import s from './EditNote.module.css';
 
-import { useNotes } from 'store/NoteContext';
+import { useNotes } from 'store';
 
 export function EditNote() {
-  const { onUpdateNote, notes, selectedNote } = useNotes();
+  const { onUpdateNote, notes, selectedNote, onSetSelectedText } = useNotes();
   const [name, setName] = useState('');
   const [text, setText] = useState('');
 
@@ -36,6 +36,10 @@ export function EditNote() {
     onUpdateField(name, e.currentTarget.value);
   };
 
+  const onTextSelect = (e: SyntheticEvent<HTMLDivElement, Event>) => {
+    onSetSelectedText(e);
+  };
+
   const stringDate = Intl.DateTimeFormat('ru', {
     dateStyle: 'long',
     timeStyle: 'short',
@@ -46,12 +50,19 @@ export function EditNote() {
       <div className={s.noteDate}>{stringDate}</div>
       <div className={s.textFieldsContainer}>
         <TextField
+          id="name"
           value={name}
           onChange={onNameChange}
-          variant="standard"
-          label="Название"
+          className={s.nameTextField}
         />
-        <TextField multiline minRows={10} value={text} onChange={onTextChange} />
+        <TextField
+          id="text"
+          multiline
+          minRows={10}
+          value={text}
+          onChange={onTextChange}
+          onSelect={onTextSelect}
+        />
       </div>
     </div>
   );

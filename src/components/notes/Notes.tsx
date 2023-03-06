@@ -1,26 +1,24 @@
-import { useEditMode } from '../../store/EditModeContext';
-import { useNotes } from '../../store/NoteContext';
-
-import { Note } from './note/Note';
+import { Note } from './note';
 import s from './Notes.module.css';
+import { NotesList } from './notesList';
 
-import { NotesList } from 'components/notes/notesList/notesList/NotesList';
+import { useEditMode, useNotes } from 'store';
 
 export type NoteType = {
   id: string;
   name: string;
-  date: Date;
+  date: number;
   text: string;
 };
 export type notesDataType = NoteType[];
 
 export function Notes() {
-  const { notes } = useNotes();
+  const { onSearchNotes } = useNotes();
   const { onSetEditMode } = useEditMode();
 
   return (
     <div className={s.NotesContainer}>
-      <NotesList notesData={notes} setEditMode={onSetEditMode} />
+      <NotesList notesData={onSearchNotes} setEditMode={onSetEditMode} />
       <div className={s.noteList}>
         <Note />
       </div>

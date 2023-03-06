@@ -14,8 +14,6 @@ export function StyledButtonIcon({ src, onClickHandler }: StyledButtonIconType) 
     outline: none;
     border-radius: 10px;
     padding: 0;
-    & {
-    }
     &:hover {
       background-color: #2f2f34;
     }

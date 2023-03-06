@@ -4,11 +4,11 @@ import Card from '@mui/material/Card/Card';
 import ReactMarkdown from 'react-markdown';
 import { useNavigate } from 'react-router-dom';
 
-import { NoteType } from '../../../Notes';
+import { NoteType } from '../../Notes';
 
 import s from './CardItem.module.css';
 
-import { useNotes } from 'store/NoteContext';
+import { useNotes } from 'store';
 
 type CardItemType = {
   item: NoteType;
@@ -35,7 +35,7 @@ export function CardItem({ item }: CardItemType) {
         <ReactMarkdown>{item.text}</ReactMarkdown>
       </Card>
       <div className={s.cardDescription}>
-        <div>{item.name}</div>
+        <div className={s.nameNote}>{item.name}</div>
         <div className={s.time}>{stringTime}</div>
       </div>
     </div>

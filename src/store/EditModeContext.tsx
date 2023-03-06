@@ -1,12 +1,17 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 
-const EditModeContext = createContext<any>(false);
+export interface EditModeContextProps {
+  editMode: boolean;
+  onSetEditMode: (value: boolean) => void;
+}
+
+const EditModeContext = createContext<EditModeContextProps>({} as EditModeContextProps);
 
 export function useEditMode() {
   return useContext(EditModeContext);
 }
 
-export function EditModeProvider({ children }: any) {
+export function EditModeProvider({ children }: { children: React.ReactNode }) {
   const [editMode, setEditMode] = useState(false);
 
   const onSetEditMode = (value: boolean) => {

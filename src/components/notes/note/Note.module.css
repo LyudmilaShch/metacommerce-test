@@ -1,9 +1,14 @@
+.noteContainer {
+width: 100%;
+
+}
 .noteDate{
     display: flex;
     justify-content: center;
     font-size: 14px;
     color: #8A8A8B;
 }
+
 
 p{
     border: none;

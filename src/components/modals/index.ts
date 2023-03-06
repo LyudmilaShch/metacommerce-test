@@ -1,0 +1,1 @@
+export { RemoveNoteModal } from './RemoveNoteModal';

@@ -1,6 +1,6 @@
 .notesListContainer {
     background-color: #1E2323;
-    width: 25%;
+    width: 30%;
     padding: 15px;
     border-right: 2px solid black;
 }
@@ -15,6 +15,12 @@
 .notesList {
     width: 100%;
     padding: 0;
-    max-height: 80vh !important;
+    max-height: 85vh !important;
     overflow: auto;
+}
+
+h3{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

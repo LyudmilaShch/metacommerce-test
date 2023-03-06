@@ -31,5 +31,9 @@
 }
 
 .itemText {
+    max-width: 220px;
     color: #7B7C80;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

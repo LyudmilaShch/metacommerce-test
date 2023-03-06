@@ -1,0 +1,10 @@
+.TiledNotesListContainer {
+    background-color: #212326;
+    min-height: calc(100vh - 50px);
+    width: 100vw;
+    padding: 25px;
+}
+
+.notesCards {
+    padding: 25px;
+}

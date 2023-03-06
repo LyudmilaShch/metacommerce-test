@@ -1,0 +1,1 @@
+export { ChangeRegisterMenu } from './ChangeRegisterMenu';
